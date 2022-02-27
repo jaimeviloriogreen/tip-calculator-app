@@ -3,7 +3,6 @@ import { buttons } from "./dom.js";
 export class Rendex{
     appButtonsActive(e){
         e.preventDefault();
-       
         const button = e.target.tagName;
         
         if( button === "BUTTON" || button === "INPUT"){
@@ -13,6 +12,10 @@ export class Rendex{
             }
             e.target.classList.add("app__button--active");
         }
+    }
+
+    clearCustomBtn(e){
+        e.target.value="";
     }
 }
 
