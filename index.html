@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <title>Tip Calculator App</title>
     <link rel="stylesheet" href="css/main.css">
+    <script type="module" src="app.js"></script>
 </head>
 <body>
 
@@ -17,7 +18,35 @@
 
         <section class="app">
             <div class="app__calc">
-
+                <div class="app__bill">
+                    <legend class="app__legend">Bill</legend>
+                    <div class="app__input-field">
+                        <input type="text" class="app__input" placeholder="0" autofocus>
+                        <img class="app__icon" src="assets/icons/dollar.svg" alt="dollar">
+                    </div>
+                </div>
+                <div class="app__select-tip">
+                    <legend class="app__legend">Select Tip</legend>
+                   <div class="app__buttons">
+                        <button class="app__button" data-porcent="0.05">5%</button>
+                        <button class="app__button" data-porcent="0.10">10%</button>
+                        <button class="app__button" data-porcent="0.15">15%</button>
+                        <button class="app__button" data-porcent="0.25">25%</button>
+                        <button class="app__button" data-porcent="0.50">50%</button>
+                        <input type="text" class="app__custom" placeholder="Custom">
+                    </div>
+                </div>
+                <div class="app__number-people">
+                    <div class="app__legends">
+                        <legend class="app__legend">Number of people</legend>
+                        <legend class="app__legend app__legend--advise">Can't be zero</legend>
+                    </div>
+                    <div class="app__input-field">
+                        <input type="text" class="app__input" placeholder="0" autofocus>
+                        <img class="app__icon" src="assets/icons/user.svg" alt="dollar">
+                    </div>
+                   
+                </div>
             </div>
             <div class="app__result">
 
