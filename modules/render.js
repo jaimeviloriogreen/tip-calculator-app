@@ -1,6 +1,6 @@
 import { buttons } from "./dom.js";
 
-export class Rendex{
+export class Render{
     appButtonsActive(e){
         e.preventDefault();
         const button = e.target.tagName;

@@ -1,11 +1,11 @@
 import { buttons, btnCustom } from "./modules/dom.js";
-import { Rendex } from "./modules/rendex.js";
+import { Render } from "./modules/render.js";
 
 main();
 
 function main(){
     // Instances
-    const {appButtonsActive, clearCustomBtn} = new Rendex();
+    const {appButtonsActive, clearCustomBtn} = new Render();
     
     // Events
     buttons.addEventListener("click", appButtonsActive);
