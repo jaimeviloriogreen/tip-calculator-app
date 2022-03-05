@@ -1,5 +1,6 @@
 import { buttons, btnCustom } from "./modules/dom.js";
 import { Rendex } from "./modules/rendex.js";
+
 main();
 
 function main(){
