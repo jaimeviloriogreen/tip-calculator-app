@@ -19,30 +19,36 @@
         <section class="app">
             <div class="app__calc">
                 <div class="app__bill">
-                    <legend class="app__legend">Bill</legend>
+                    <div class="app__legends">
+                        <legend class="app__legend">Bill</legend>
+                        <legend class="app__legend app__legend--advise app__legend--advise-bill">Can't be zero</legend>
+                    </div>
                     <div class="app__input-field">
                         <input type="text" class="app__input" placeholder="0" autofocus>
                         <img class="app__icon" src="assets/icons/dollar.svg" alt="dollar">
                     </div>
                 </div>
                 <div class="app__select-tip">
-                    <legend class="app__legend">Select Tip %</legend>
+                    <div class="app__legends">
+                        <legend class="app__legend">Select Tip %</legend>
+                        <legend class="app__legend app__legend--advise app__legend--advise-tip">Tip not selected</legend>
+                    </div>
                    <div class="app__buttons">
-                        <button class="app__button" data-porcent="0.05">5%</button>
-                        <button class="app__button" data-porcent="0.10">10%</button>
-                        <button class="app__button" data-porcent="0.15">15%</button>
-                        <button class="app__button" data-porcent="0.25">25%</button>
-                        <button class="app__button" data-porcent="0.50">50%</button>
+                        <button class="app__button" data-percent="0.05">5%</button>
+                        <button class="app__button" data-percent="0.10">10%</button>
+                        <button class="app__button" data-percent="0.15">15%</button>
+                        <button class="app__button" data-percent="0.25">25%</button>
+                        <button class="app__button" data-percent="0.50">50%</button>
                         <input type="text" class="app__custom" placeholder="Custom">
                     </div>
                 </div>
                 <div class="app__number-people">
                     <div class="app__legends">
                         <legend class="app__legend">Number of people</legend>
-                        <legend class="app__legend app__legend--advise">Can't be zero</legend>
+                        <legend class="app__legend app__legend--advise app__legend--advise-people">Can't be zero</legend>
                     </div>
                     <div class="app__input-field">
-                        <input type="text" class="app__input" placeholder="0" autofocus>
+                        <input type="text" class="app__input app__input-number-people" placeholder="0" autofocus>
                         <img class="app__icon" src="assets/icons/user.svg" alt="dollar">
                     </div>
                    
@@ -52,12 +58,12 @@
                 <div class="app__tip">
                     <p class="app__tip-amount-text">Tip Amount </p>
                     <span class="app__tip-person">/ person</span>
-                    <p class="app__tip-amount-value">$0.00</p>
+                    <p class="app__tip-amount-value app__tip-amount-person">$0.00</p>
                 </div>
                 <div class="app__total">
-                    <p class="app__total-amount-text">Tip Amount </p>
+                    <p class="app__total-amount-text">Total </p>
                     <span class="app__total-person">/ person</span>
-                    <p class="app__total-amount-value">$0.00</p>
+                    <p class="app__total-amount-value app__tip-amount-total">$0.00</p>
                 </div>
 
                 <div class="app__reset">

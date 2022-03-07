@@ -150,6 +150,7 @@ body{
     letter-spacing: 1px;
     cursor: pointer;
     border: none;
+    outline: none;
     border-radius: .25rem;
 }
 .app__button--active{
@@ -196,8 +197,11 @@ body{
 }
 .app__legend--advise{
     color: tomato;
-    display: none;
+    
 }
+.app__legend--advise-people{display: none;}
+.app__legend--advise-tip{display: none;}
+.app__legend--advise-bill{display: none;}
 
 /* Result */
 .app__result{
