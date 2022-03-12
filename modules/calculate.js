@@ -1,5 +1,3 @@
-import { tipAmountPersonValue, tipAmountTotalValue } from "./dom.js";
-import { Render } from "./render.js";
 
 export class Calculate{
     constructor(){
@@ -10,20 +8,24 @@ export class Calculate{
     }
 
     static calculator(){
+        import("./render.js").then(({Render})=>{
+            const tipAmountPerson = document.querySelector(".app__tip-amount-person");
+            const tipAmountTotal= document.querySelector(".app__tip-amount-total");
+            
+            const { displayAdvice } = new Render();
 
-        const { displayAdvice } = new Render();
-        
-        Calculate.numberPeople <= 0 ? displayAdvice("people", "show") : displayAdvice("people", "hide"); 
-        
-        let x, y, z = 0;
+            Calculate.numberPeople <= 0 ? displayAdvice("people", "show") : displayAdvice("people", "hide"); 
+            
+            let x, y, z = 0;
 
-        if(Calculate.numberPeople > 0 && Calculate.bill > 0)  {
-            x = this.billValue / this.numberPeopleValue;
-            y = x * this.tipValue || x * this.customTipValue;
-            z = x + y;
-        }
-        tipAmountPersonValue.innerHTML = Calculate.formatValue(y);
-        tipAmountTotalValue.innerHTML = Calculate.formatValue(z)
+            if(Calculate.numberPeople > 0 && Calculate.bill > 0)  {
+                x = Calculate.bill / Calculate.numberPeople;
+                y = x * Calculate.tip || x * Calculate.customTip;
+                z = x + y;
+            }
+                tipAmountPerson.innerHTML = Calculate.formatValue(y);
+                tipAmountTotal.innerHTML = Calculate.formatValue(z);
+            });
     }
 
     static formatValue(value = 0){
@@ -45,7 +47,7 @@ export class Calculate{
     }
     getBill(e){
         e.preventDefault();
-        
+        console.log(this.value);
         Calculate.bill = Number(this.value);
         Calculate.customTip = 0;
         Calculate.calculator();
@@ -59,12 +61,17 @@ export class Calculate{
         this.tipValue = value;
     }
     getTip(e){
-        const buttons = e.target.tagName;
-        if(buttons === "BUTTON"){
-            Calculate.tip = Number(e.target.dataset.percent);
-            Calculate.customTip = 0;
-            Calculate.calculator();
-        }
+        import("./render.js").then(({Render})=>{
+            Render.appButtonsActive(e);
+
+            const buttons = e.target.tagName;
+
+            if(buttons === "BUTTON"){
+                Calculate.tip = Number(e.target.dataset.percent);
+                Calculate.customTip = 0;
+                Calculate.calculator();
+            }
+        });
         
     }
      // ***  Custom Tips

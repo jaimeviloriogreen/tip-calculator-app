@@ -7,7 +7,7 @@ export class Render{
             child.classList.remove("app__button--active");
         }
     }
-    appButtonsActive(e){
+    static appButtonsActive(e){
         e.preventDefault();
         const button = e.target.tagName;
         if( button === "BUTTON" || button === "INPUT"){
