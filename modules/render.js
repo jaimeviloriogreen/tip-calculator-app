@@ -1,34 +1,48 @@
-import { buttons, btnCustom } from "./dom.js";
+import { buttons, btnCustom, billInput, numberPeopleInput } from "./dom.js";
 
 export class Render{
+
+    static removeAllActiveStyle(buttons){
+        for(let child of buttons.children){
+            child.classList.remove("app__button--active");
+        }
+    }
     appButtonsActive(e){
         e.preventDefault();
         const button = e.target.tagName;
-        
         if( button === "BUTTON" || button === "INPUT"){
-    
-            for(let child of buttons.children){
-                child.classList.remove("app__button--active");
-            }
+            
+            Render.removeAllActiveStyle(buttons);
+
             e.target.classList.add("app__button--active");
-
-            btnCustom.classList.remove("app__button--active");
-            btnCustom.value = "";           
+            btnCustom.value = "";
         }
-
-        if( btnCustom.tagName === "INPUT"){
-            btnCustom.classList.toggle("app__button--active");
-        }
+        
     }
 
-    showAdvice(value){
+    displayAdvice(value, display){
         const elementHTML = document.querySelector(`.app__legend--advise-${value}`);
-        elementHTML.style.display = "unset";
+        if(display === "show") elementHTML.style.display = "unset";
+        if(display === "hide") elementHTML.style.display = "none";
     }
+    
+    resetApp(e){
+        e.preventDefault();
 
-    hideAdvice(value){
-        const elementHTML = document.querySelector(`.app__legend--advise-${value}`);
-        elementHTML.style.display = "none";
+        import("./calculate.js").then(({ Calculate })=>{
+            Calculate.bill = 0;
+            Calculate.tip = 0;
+            Calculate.customTip = 0;
+            Calculate.numberPeople = 0;
+            
+            Render.removeAllActiveStyle(buttons);
+
+            billInput.value = "";    
+            btnCustom.value = "";
+            numberPeopleInput.value = "";
+
+            Calculate.calculator();
+        });
     }
 }
 

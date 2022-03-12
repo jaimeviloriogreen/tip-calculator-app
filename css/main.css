@@ -107,7 +107,7 @@ body{
     background-color: var(--color9);
     border-radius: .25rem;
     padding: 0rem 1rem 0rem 3rem;
-    text-align: end;
+    text-align: right;
     font-size: 1.125rem;
     color: var(--color5);
     letter-spacing: 1px;

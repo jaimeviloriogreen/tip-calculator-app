@@ -11,26 +11,19 @@ export class Calculate{
 
     static calculator(){
 
-        const {showAdvice, hideAdvice} = new Render();
-
-        if(this.numberPeople <= 0){
-            showAdvice("people");
-        }
-        if(this.numberPeople){
-            hideAdvice("people");
-        }
+        const { displayAdvice } = new Render();
+        
+        Calculate.numberPeople <= 0 ? displayAdvice("people", "show") : displayAdvice("people", "hide"); 
         
         let x, y, z = 0;
 
-        if(this.numberPeopleValue > 0 && this.billValue > 0)  {
+        if(Calculate.numberPeople > 0 && Calculate.bill > 0)  {
             x = this.billValue / this.numberPeopleValue;
             y = x * this.tipValue || x * this.customTipValue;
             z = x + y;
         }
-        
         tipAmountPersonValue.innerHTML = Calculate.formatValue(y);
         tipAmountTotalValue.innerHTML = Calculate.formatValue(z)
-
     }
 
     static formatValue(value = 0){
@@ -50,8 +43,11 @@ export class Calculate{
     static set bill(value){
         this.billValue = value;
     }
-    getBill(){
+    getBill(e){
+        e.preventDefault();
+        
         Calculate.bill = Number(this.value);
+        Calculate.customTip = 0;
         Calculate.calculator();
     }
 
@@ -62,13 +58,12 @@ export class Calculate{
     static set tip(value){
         this.tipValue = value;
     }
-
     getTip(e){
         const buttons = e.target.tagName;
         if(buttons === "BUTTON"){
             Calculate.tip = Number(e.target.dataset.percent);
-            Calculate.calculator();
             Calculate.customTip = 0;
+            Calculate.calculator();
         }
         
     }
@@ -99,7 +94,9 @@ export class Calculate{
     static set numberPeople(value){
         this.numberPeopleValue = value;
     }
-    getNumberOfPeople(){
+    getNumberOfPeople(e){
+        e.preventDefault();
+        
         Calculate.numberPeople = Number(this.value);
         Calculate.calculator();
     }
