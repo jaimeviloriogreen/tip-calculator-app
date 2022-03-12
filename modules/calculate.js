@@ -47,7 +47,6 @@ export class Calculate{
     }
     getBill(e){
         e.preventDefault();
-        console.log(this.value);
         Calculate.bill = Number(this.value);
         Calculate.customTip = 0;
         Calculate.calculator();
