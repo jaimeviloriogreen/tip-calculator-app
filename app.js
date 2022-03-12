@@ -11,11 +11,11 @@ function main(){
     
     // Events
     buttons.addEventListener("click", getTip);
+    btnReset.addEventListener("click", resetApp);
     
     btnCustom.addEventListener("keyup", getCustomTip);
     billInput.addEventListener("keyup", getBill);
     numberPeopleInput.addEventListener("keyup", getNumberOfPeople);
 
-    btnReset.addEventListener("click", resetApp);
     
 }

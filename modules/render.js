@@ -41,7 +41,7 @@ export class Render{
             btnCustom.value = "";
             numberPeopleInput.value = "";
 
-            Calculate.calculator();
+            Calculate.calculator(false);
         });
     }
 }

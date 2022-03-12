@@ -7,14 +7,24 @@ export class Calculate{
         this.numberPeopleValue = 0;
     }
 
-    static calculator(){
+    static calculator(validateAdvice = true){
         import("./render.js").then(({Render})=>{
             const tipAmountPerson = document.querySelector(".app__tip-amount-person");
             const tipAmountTotal= document.querySelector(".app__tip-amount-total");
             
             const { displayAdvice } = new Render();
 
-            Calculate.numberPeople <= 0 ? displayAdvice("people", "show") : displayAdvice("people", "hide"); 
+            if(validateAdvice){
+                if(Calculate.numberPeople > 0){
+                    displayAdvice("people", "hide");
+                }else{
+                    displayAdvice("people", "show");
+                }
+                
+                if(Calculate.numberPeople === ""){
+                    displayAdvice("people", "hide");
+                }
+            }
             
             let x, y, z = 0;
 
@@ -49,7 +59,7 @@ export class Calculate{
         e.preventDefault();
         Calculate.bill = Number(this.value);
         Calculate.customTip = 0;
-        Calculate.calculator();
+        Calculate.calculator(false);
     }
 
     // ***  Tips    
@@ -68,7 +78,7 @@ export class Calculate{
             if(buttons === "BUTTON"){
                 Calculate.tip = Number(e.target.dataset.percent);
                 Calculate.customTip = 0;
-                Calculate.calculator();
+                Calculate.calculator(false);
             }
         });
         
@@ -85,10 +95,10 @@ export class Calculate{
         Calculate.tip = 0;
         if(value){
             Calculate.customTip = value;
-            Calculate.calculator();
+            Calculate.calculator(false);
         }else{
             Calculate.customTip = 0;
-            Calculate.calculator();
+            Calculate.calculator(false);
 
         }
     }
@@ -103,7 +113,7 @@ export class Calculate{
     getNumberOfPeople(e){
         e.preventDefault();
         
-        Calculate.numberPeople = Number(this.value);
+        Calculate.numberPeople = this.value;
         Calculate.calculator();
     }
 }
